@@ -1,0 +1,194 @@
+Algoritmo "Agência de Viagens"
+// Aluna: Vanessa de Vargas de Azeveo
+
+Var
+// Seção de Declarações das variáveis
+X,FLAG: logico
+nomes, enderecos: vetor [0 ..4] de caractere
+telefones: vetor [0..4] de real
+cidades, estados, temporadas: vetor [0..4] de caractere
+opcao, nome, cidade: caractere
+i, j, s: inteiro
+
+Procedimento inicializa()
+Inicio //Programa principal
+x := verdadeiro
+flag <- x
+enquanto flag faca
+   x := verdadeiro
+   mudacor("azul","frente")
+   mudacor("branco","fundos")
+   limpatela
+   Escreval("          Sistema de Cadastro       ")
+   Escreval("           Agência de Viagens       ")
+   Escreval(" ")
+   Escreval("    ================================")
+   Escreval("    |             Menu             |")
+   Escreval("    ================================")
+   Escreval("    |   1 - Cadastro de Cliente    |")
+   Escreval("    |   2 - Cadastro de Destino    |")
+   Escreval("    |   3 - Consulta Cliente       |")
+   Escreval("    |   4 - Consulta Destino       |")
+   Escreval("    |   5 - Finaliza               |")
+   Escreval("    ================================")
+   Escreval("  ")
+   Escreva("      Digite a o número da sua opção:")
+   Leia(opcao)
+   Escolha opcao
+   Caso "1"
+      cadastro_cliente()
+   Caso "2"
+      cadastro_destino()
+   Caso "3"
+      consulta_cliente()
+   Caso "4"
+      consulta_destino()
+   Caso "5"
+      flag := falso   // muda a variável do controle para encerrar o loop
+
+   Outrocaso
+      Escreval("  Opção inválida")
+      Escreva("  Tecle Enter para continuar ou Esc para finalizar")
+      Leia(X)
+   fimescolha
+ fimenquanto
+Fimprocedimento
+
+Procedimento cadastro_cliente()
+Inicio
+limpatela
+para i de 0 ate 4 faca
+   se (nomes[i] = "") entao
+      Escreva ("Nome: ")
+      leia (nomes[i])
+      Escreva ("Endereço: ")
+      leia (enderecos [i])
+      Escreva ("Telefone: ")
+      leia (telefones [i])
+      voltar_menu()
+      s <- s + 1
+      limpatela
+   fimse
+fimpara
+Escreval ("Esgotou o limite de cadastros")
+fimprocedimento
+
+Procedimento voltar_menu()
+Inicio
+Escreva ("Voltar para o menu (S/N)?")
+leia (opcao)
+se opcao="S" entao
+   i <- i +1
+   limpatela
+   inicializa()
+   senao
+      limpatela
+      cadastro_cliente()
+fimse
+fimprocedimento
+
+Procedimento cadastro_destino()
+Inicio
+limpatela
+para i de 0 ate 4 faca
+   se (cidades[i] = "") entao
+      Escreva ("Cidade: ")
+      leia (cidades[i])
+      Escreva ("Estado: ")
+      leia (estados [i])
+      Escreva ("Temporada: ")
+      leia (temporadas [i])
+      voltar_menu1()
+      s <- s + 1
+      limpatela
+   fimse
+fimpara
+Escreval ("Esgotou o limite de cadastros")
+fimprocedimento
+
+Procedimento voltar_menu1()
+Inicio
+Escreva ("Voltar para o menu (S/N)?")
+leia (opcao)
+   se opcao="S" entao
+   i <- i +1
+   limpatela
+   inicializa()
+   senao
+      limpatela
+      cadastro_destino()
+   fimse
+fimprocedimento
+
+Procedimento consulta_cliente()
+Inicio
+limpatela
+j <- 0
+Escreva("Digite o nome do cliente: ")
+leia (nome)
+para i de 0 ate 4 faca
+   se nome=nomes[i] entao
+      Escreval ("Nome: ", nomes[i])
+      Escreval ("Endereço: ", enderecos[i])
+      Escreval ("Telefone: ", telefones[i])
+      j <- j+1
+   fimse
+fimpara
+se j=0 entao
+   Escreval ("Cliente inexistente")
+fimse
+voltar_menu2()
+limpatela
+fimprocedimento
+
+Procedimento voltar_menu2()
+Inicio
+Escreva ("Voltar para o menu (S/N)?")
+leia (opcao)
+se opcao="S" entao
+   limpatela
+   inicializa()
+   senao
+      limpatela
+      consulta_cliente()
+fimse
+fimprocedimento
+
+Procedimento consulta_destino()
+Inicio
+limpatela
+j <- 0
+Escreva("Digite a cidade para sua busca: ")
+leia (cidade)
+para i de 0 ate 4 faca
+   se cidade=cidades[i] entao
+      Escreval ("Nome: ", cidades[i])
+      Escreval ("Endereço: ", estados[i])
+      Escreval ("Telefone: ", temporadas[i])
+      j <- j+1
+   fimse
+fimpara
+se j=0 entao
+   Escreval ("Destino inexistente")
+fimse
+voltar_menu3()
+limpatela
+fimprocedimento
+
+Procedimento voltar_menu3()
+Inicio
+Escreva ("Voltar para o menu (S/N)?")
+leia (opcao)
+se opcao="S" entao
+   limpatela
+   inicializa()
+   senao
+      limpatela
+      consulta_destino()
+fimse
+fimprocedimento
+
+Inicio
+inicializa()
+
+Fimalgoritmo
